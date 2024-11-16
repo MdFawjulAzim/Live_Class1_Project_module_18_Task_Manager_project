@@ -1,0 +1,303 @@
+{
+	"info": {
+		"_postman_id": "05f6d845-8ede-4fa1-8733-9d190e2b97d3",
+		"name": "Live Class TASK Manager Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38179196"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"mdfawjulazim61@gmail.com\",\r\n    \"firstName\":\"Fawjul\",\r\n    \"lastName\":\"Azim\",\r\n    \"mobile\":\"01644213617\",\r\n    \"password\":\"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASEURL}}/Registration",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"Registration"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"mdfawjulazim61@gmail.com\",\r\n    \"password\":\"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASEURL}}/Login",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProfileDetails",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1kZmF3anVsYXppbTYxQGdtYWlsLmNvbSIsInVzZXJfaWQiOiI2NzM4ZTk1ZWM4ZGEwNDQyZDExNjJiYTEiLCJpYXQiOjE3MzE3ODM1MTEsImV4cCI6MTczNDM3NTUxMX0.R-onKLo7edKf8gDMCv_omhK3Boa-udbciocOgOFIuYo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASEURL}}/ProfileDetails",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"ProfileDetails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProfileUpdate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASEURL}}/ProfileUpdate",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"ProfileUpdate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EmailVerify",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASEURL}}/EmailVerify",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"EmailVerify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CodeVerify",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASEURL}}/CodeVerify",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"CodeVerify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ResetPassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASEURL}}/ResetPassword",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"ResetPassword"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "CreateTask",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASEURL}}/CreateTask",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"CreateTask"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateTaskStatus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASEURL}}/UpdateTaskStatus",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"UpdateTaskStatus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TaskListByStatus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASEURL}}/TaskListByStatus",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"TaskListByStatus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteTask",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASEURL}}/DeleteTask",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"DeleteTask"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CountTask",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASEURL}}/CountTask",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"CountTask"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASEURL",
+			"value": "http://localhost:5050/api",
+			"type": "string"
+		},
+		{
+			"key": "TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MzE3ODI0NzgsImV4cCI6MTczNDM3NDQ3OH0.1CFrM3U3bDPCWJL04etgDw9qzf5Ifc9yU9vHWRvA1tU",
+			"type": "string"
+		}
+	]
+}
