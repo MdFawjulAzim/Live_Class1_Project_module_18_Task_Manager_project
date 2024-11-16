@@ -1,4 +1,5 @@
 import UserModel from "../models/UserModel.js";
+import { EncodeToken } from './../utility/tokenUtility.js';
 
 
 
@@ -8,12 +9,25 @@ export const Registration = async (req,res)=>{
         await UserModel.create(reqBody);
         return res.json({status:"success","Message":"User Registration Successfully"})
     }catch(err){
-        return res.status(400).json({status:"error","Message":err.toString()})
+        return res.status(400).json({status:"fail","Message":err.toString()})
     }
 }
 
 export const Login = async (req,res)=>{
-    return res.json({status:"success","Message":"User Login Successfully"})
+    try{
+        let reqBody = req.body;
+        let data = await UserModel.findOne(reqBody);
+        if(data===null){
+            return res.status(404).json({status:"fail","Message":"User not found"})
+        }
+        else{
+            //Login Successfully Token Encoded
+            let token = EncodeToken(data['email',data['_id']]);
+            return res.json({status:"success","Message":"User Login Successfully","token":token})
+        }
+    }catch(err){
+        return res.status(400).json({status:"fail","Message":err.toString()})
+    }
 }
 export const ProfileDetails = async (req,res)=>{
     return res.json({status:"success","Message":"User ProfileDetails Successfully"})
