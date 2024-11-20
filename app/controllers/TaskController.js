@@ -15,7 +15,21 @@ export const CreateTask = async (req,res)=>{
 }
 
 export const UpdateTaskStatus = async (req,res)=>{
-    return res.json({status:"success","Message":"User UpdateTaskStatus Successfully"})
+    try{
+        let id = req.params.id;
+        let status = req.params.status;
+        let user_id = req.headers['user_id'];
+        let data = await TaskModel.findOneAndUpdate({"_id":id,"user_id":user_id},{$set:{status:status}},{new:true});
+        if(data){
+            return res.json({status:"success","Message":"User UpdateTaskStatus Successfully",data:data});
+        }
+        else{
+            return res.json({status:"fail","Message":"Task not found or not belong to user"})
+        }
+
+    }catch(err){
+        return res.json({status:"fail","Message":err.toString()})
+    }
 }
 export const TaskListByStatus = async (req,res)=>{
     return res.json({status:"success","Message":"User TaskListByStatus Successfully"})
