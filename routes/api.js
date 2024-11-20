@@ -21,7 +21,7 @@ router.post('/ResetPassword',UsersController.ResetPassword);
 //Task 
 router.post('/CreateTask',AuthMiddleware,TaskController.CreateTask);
 router.get('/UpdateTaskStatus/:id/:status',AuthMiddleware,TaskController.UpdateTaskStatus);
-router.get('/TaskListByStatus',AuthMiddleware,TaskController.TaskListByStatus);
+router.get('/TaskListByStatus/:status',AuthMiddleware,TaskController.TaskListByStatus);
 router.get('/DeleteTask',AuthMiddleware,TaskController.DeleteTask);
 router.get('/CountTask',AuthMiddleware,TaskController.CountTask);
 

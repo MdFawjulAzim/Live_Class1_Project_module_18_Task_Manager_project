@@ -32,7 +32,14 @@ export const UpdateTaskStatus = async (req,res)=>{
     }
 }
 export const TaskListByStatus = async (req,res)=>{
-    return res.json({status:"success","Message":"User TaskListByStatus Successfully"})
+    try{
+        let status = req.params.status;
+        let user_id = req.headers['user_id'];
+        let data = await TaskModel.find({"user_id":user_id,"status":status});
+        return res.json({status:"success","Message":"User TaskListByStatus Successfully",data:data});
+    }catch(err){
+        return res.json({status:"fail","Message":err.toString()})
+    }
 }
 export const DeleteTask = async (req,res)=>{
     return res.json({status:"success","Message":"User DeleteTask Successfully"})
