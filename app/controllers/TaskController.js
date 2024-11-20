@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import TaskModel from "../models/TaskModel.js"
 
 export const CreateTask = async (req,res)=>{
@@ -42,8 +43,32 @@ export const TaskListByStatus = async (req,res)=>{
     }
 }
 export const DeleteTask = async (req,res)=>{
-    return res.json({status:"success","Message":"User DeleteTask Successfully"})
+    try{
+        let id = req.params.id;
+        let user_id = req.headers['user_id'];
+        let data = await TaskModel.deleteOne({"_id":id,"user_id":user_id});
+        if(data){
+            return res.json({status:"success","Message":"User DeleteTask Successfully",data:data});
+        }
+        else{
+            return res.json({status:"fail","Message":"Task not found or not belong to user"})
+        }
+    }catch{
+        return res.json({status:"fail","Message":err.toString()})
+    }
 }
 export const CountTask = async (req,res)=>{
-    return res.json({status:"success","Message":"User CountTask Successfully"})
+    try{
+        let ObjectID = mongoose.Types.ObjectId;
+        let user_id = req.headers['user_id'];
+        let user_id_object = new ObjectID(user_id);
+
+        let data = await TaskModel.aggregate([
+            {$match:{user_id:user_id_object}},
+            {$group:{_id:"$status",sum:{$count:{}}}}
+        ]);
+        return res.json({status:"success","Message":"User CountTask Successfully",data:data});
+    }catch(err){
+        return res.json({status:"fail","Message":err.toString()})
+    }
 }
