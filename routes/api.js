@@ -13,7 +13,7 @@ router.post('/Registration',UsersController.Registration);
 router.post('/Login',UsersController.Login);
 router.get('/ProfileDetails',AuthMiddleware,UsersController.ProfileDetails);
 router.post('/ProfileUpdate',AuthMiddleware,UsersController.ProfileUpdate);
-router.get('/EmailVerify',UsersController.EmailVerify);
+router.get('/EmailVerify/:email',UsersController.EmailVerify);
 router.post('/CodeVerify',UsersController.CodeVerify);
 router.post('/ResetPassword',UsersController.ResetPassword);
 

@@ -1,4 +1,5 @@
 import UserModel from "../models/UserModel.js";
+import EmailSend from "../utility/emailUtility.js";
 import { EncodeToken } from './../utility/tokenUtility.js';
 
 
@@ -65,8 +66,28 @@ export const ProfileUpdate = async (req,res)=>{
 
 
 }
+
 export const EmailVerify = async (req,res)=>{
-    return res.json({status:"success","Message":"User EmailVerify Successfully"})
+    try{
+        let email = req.params.email;
+        let data = await UserModel.findOne({"email":email});
+        if(data == null){
+            return res.json({status:"fail","Message":"User not found"})
+        }else{
+            let code = Math.floor(100000+Math.random()*900000);
+             let EmailTo = data['email'];
+             let EmailText = "Your Code is" + " " + code;
+             let EmailSubject = "Task Manger Verification Code"
+             await EmailSend(EmailTo,EmailText,EmailSubject);
+
+
+             await UserModel.updateOne({email:email},{otp:code});
+            return res.json({status:"success","Message":"User Email Verify Successfully"})
+        }
+
+    }catch(err){
+        return res.json({status:"fail","Message":err.toString()})
+    } 
 }
 export const CodeVerify = async (req,res)=>{
     return res.json({status:"success","Message":"User CodeVerify Successfully"})
