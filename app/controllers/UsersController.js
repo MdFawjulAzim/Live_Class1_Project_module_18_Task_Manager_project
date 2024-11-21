@@ -90,7 +90,22 @@ export const EmailVerify = async (req,res)=>{
     } 
 }
 export const CodeVerify = async (req,res)=>{
-    return res.json({status:"success","Message":"User CodeVerify Successfully"})
+    try{
+        let email = req.params.email;
+        let code = req.params.code;
+        let data = await UserModel.findOne({"email":email,otp:code});
+        if(data == null){
+            return res.json({status:"fail","Message":"User not found or Invalid Code"})
+        }
+        else{
+            // await UserModel.updateOne({email:email},{otp:null});
+            return res.json({status:"success","Message":"User Email Verify Successfully"})
+        }
+
+
+    }catch{
+        return res.json({status:"fail","Message":err.toString()})
+    }
 }
 
 export const ResetPassword = async (req,res)=>{
