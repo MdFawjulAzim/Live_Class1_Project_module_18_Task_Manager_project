@@ -89,6 +89,7 @@ export const EmailVerify = async (req,res)=>{
         return res.json({status:"fail","Message":err.toString()})
     } 
 }
+
 export const CodeVerify = async (req,res)=>{
     try{
         let email = req.params.email;
@@ -109,5 +110,19 @@ export const CodeVerify = async (req,res)=>{
 }
 
 export const ResetPassword = async (req,res)=>{
-    return res.json({status:"success","Message":"User ResetPassword Successfully"})
+    try{
+        let reqBody = req.body;
+        let data = await UserModel.findOne({"email":reqBody["email"],otp:reqBody["code"]});
+        if(data == null){
+            return res.json({status:"fail","Message":"User not found or Invalid Code"})
+        }
+        else{
+            let newPassword = reqBody["password"];
+            await UserModel.updateOne({email:reqBody["email"]},{otp:"0",password:newPassword});
+            return res.json({status:"success","Message":"User Reset Password Successfully"})
+        }
+
+    }catch{
+        return res.json({status:"fail","Message":err.toString()})
+    }
 }
