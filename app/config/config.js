@@ -9,8 +9,8 @@ export const JWT_EXPIRATION_TIME = 60*60*24*30;
 
 export const EMAIL_HOST = "sandbox.smtp.mailtrap.io";
 export const EMAIL_PORT = "2525";
-export const EMAIL_USER = "5fc26869720822";
-export const EMAIL_PASSWORD = "cf8751afc21c92";
+export const EMAIL_USER = "ffd3655ea4cb6f";
+export const EMAIL_PASSWORD = "9eec6de13aba90";
 export const MAIL_ENCRYPTION=""; //as needed for the mailtrap
 
 export const Max_JSON_SIZE = "50mb";
