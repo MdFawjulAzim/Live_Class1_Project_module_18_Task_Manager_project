@@ -7,11 +7,22 @@ export const MONGODB_CONNECTION="mongodb+srv://mdfawjulazim:mdfawjulazim123@clus
 export const JWT_SECRET = "5EC7CEFA1BE7C9354A639369A2AA8JS";
 export const JWT_EXPIRATION_TIME = 60*60*24*30;
 
-export const EMAIL_HOST = "sandbox.smtp.mailtrap.io";
-export const EMAIL_PORT = "2525";
-export const EMAIL_USER = "ffd3655ea4cb6f";
-export const EMAIL_PASSWORD = "9eec6de13aba90";
-export const MAIL_ENCRYPTION=""; //as needed for the mailtrap
+// export const EMAIL_HOST = "sandbox.smtp.mailtrap.io";
+// export const EMAIL_PORT = "2525";
+// export const EMAIL_USER = "ffd3655ea4cb6f";
+// export const EMAIL_PASSWORD = "9eec6de13aba90";
+// export const MAIL_ENCRYPTION=""; //as needed for the mailtrap
+
+//if you use your own email
+export const EMAIL_HOST = "smtp.gmail.com";
+export const EMAIL_PORT = "587";
+export const EMAIL_USER = "mdfawjulazim617@gmail.com";
+export const EMAIL_PASSWORD = "vkvbeppgoneanlcs";
+export const MAIL_ENCRYPTION="tls"; //as needed for the mailtrap
+
+// পোর্ট 465: SSL দিয়ে ইমেইল এনক্রিপশন।
+// পোর্ট 587: STARTTLS দিয়ে TLS এনক্রিপশন।
+// পোর্ট 25: পুরোনো SMTP রিলেই পোর্ট, যা এখন সার্ভার টু সার্ভার ইমেইল আদান-প্রদানের জন্য ব্যবহৃত হয়।
 
 export const Max_JSON_SIZE = "50mb";
 export const URL_ENCODER = true;
